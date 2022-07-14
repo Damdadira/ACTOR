@@ -12,7 +12,7 @@
   --color-dark-green: #2c5e40;
   --color-medium-green: #56916c;
   --color-green: #3c9d64;
-  --color-light-green: #64bd8a;
+  --color-light-green: #8ee0b2;
   --color-black: #000000;
 
   /* Font Size */
@@ -328,7 +328,7 @@ background-color: var(--color-black);
 .award__historys {
   display: flex;
   justify-content: space-between;
-  margin: 60px 0;
+  margin-top: 60px;
 }
 
 .history__icon {
@@ -363,4 +363,34 @@ background-color: var(--color-black);
   margin: 12px 0;
   line-height: 2em;
   color: var(--color-dark-grey);
+}
+
+/* Contact */
+#contact {
+  background-color: var(--color-black);
+  padding: 32px 0;
+}
+
+.contact__title,
+.contact__email {
+  color: var(--color-white);
+}
+
+.contact__title {
+  margin: 4px 0;
+}
+
+.contact__email {
+  margin: auto;
+  padding-top: 16px;
+}
+
+.contact__links {
+  font-size: var(--font-medium);
+  padding-top: 16px;
+}
+
+.contact__links i:hover {
+  transform: scale(1.2);
+  color: var(--color-light-grey);
 }
