@@ -9,7 +9,7 @@
   --color-grey: #616161;
   --color-light-grey: #7c7979;
   --color-orange: #feb546;
-  --color-dark-green: #287648;
+  --color-dark-green: #2c5e40;
   --color-green: #3c9d64;
   --color-light-green: #64bd8a;
   --color-black: #000000;
@@ -68,7 +68,7 @@ button {
 h1 {
   font-size: var(--font-large);
   font-weight: var(--weight-bold);
-  color: var(--color-black);
+  color: var(--color-dark-green);
   margin: 16px 0;
 }
 
@@ -178,4 +178,32 @@ background-color: var(--color-black);
 
 .home__contact:hover {
   background-color: var(--color-light-grey);
+}
+
+/* Section common */
+.section {
+  padding: 50px;
+  text-align: center;
+  margin: auto;
+}
+
+/* Profile */
+.profile__img {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 24px 0;
+  justify-content: center;
+}
+
+.profile__name {
+  color: var(--color-green);
+  text-align: end;
+  padding-bottom: 12px;
+}
+
+.profile__majors {
+  color: var(--color-light-green);
+  text-align: end;
+  padding-bottom: 24px;
+  line-height: 2em;
 }
