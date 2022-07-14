@@ -92,3 +92,54 @@ p {
   color: var(--color-black);
   margin: 4px 0;
 }
+
+/* Navbar */
+#navbar {
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  color: var(--color-white);
+  padding: 0;
+  background-color: var(--color-black); /*transparent; */
+  transition: all var(--animation-duration) ease-in-out;
+  z-index: 1;
+}
+
+/* #navbar.navbar-dark {  
+background-color: var(--color-black);
+  padding: 8px;
+}  */
+
+.navbar__menu {
+  text-align: center;
+  margin: 0 0 12px 0;
+}
+
+.navbar__menu__item {
+  padding: 8px 12px;
+  margin: 0 4px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.navbar__menu__item.active {
+  content: ''; /*밑줄 디자인을 위해 비워둠*/
+  /* border-bottom: solid 2px var(--color-white); */
+  border-bottom: groove 2px var(--color-white);
+  border-bottom: dotted 2px var(--color-white);
+  transition: all 250ms ease-in-out;
+}
+
+.navbar__menu__item:hover {
+  border-bottom: groove 2px var(--color-white);
+  border-bottom: dotted 2px var(--color-white);
+}
+
+.navbar__toggle-btn {
+  position: absolute;
+  top: 12px;
+  right: 32px;
+  font-size: 24px;
+  color: var(--color-white);
+  display: none;
+}
