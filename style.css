@@ -428,7 +428,7 @@ p {
 
   .navbar__toggle-btn {
     display: block;
-    top: 110px;
+    top: 75px;
     right: 16px;
     font-size: var(--font-medium);
   }
@@ -436,7 +436,27 @@ p {
   #navbar {
     flex-direction: column;
     align-items: flex-start;
-    background-color: var(--color-black);
+  }
+
+  .navbar__menu {
+    text-align: center;
+    width: 100%;
+    display: none;
+  }
+
+  .navbar__menu__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .navbar__menu__item:hover {
+    content: ''; /*밑줄 디자인을 위해 비워둠*/
+    border-bottom: groove 2px var(--color-white);
+    border: dotted 2px var(--color-white);
+  }
+
+  .navbar__menu.open {
+    display: block;
   }
 
   .section {

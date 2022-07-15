@@ -26,7 +26,14 @@ navbarMenu.addEventListener('click', (event) => {
   // 스무스하게 이동하겠다
   // const scrollTo = document.querySelector(link);
   // scrollTo.scrollIntoView({ behavior: 'smooth' });
+  navbarMenu.classList.remove('open'); //small screen에서 처음 시작할 때 navbar메뉴 안보이도록
   scrollIntoView(link);
+});
+
+//small screen에서 navbar toggle button 작동하도록
+const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
+navbarToggleBtn.addEventListener('click', () => {
+  navbarMenu.classList.toggle('open');
 });
 
 //Home의 'Contact me'버튼을 누르면 Contact페이지로 이동하도록
