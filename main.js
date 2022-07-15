@@ -74,6 +74,14 @@ filmographyBtnContainer.addEventListener('click', (e) => {
   if (filter == null) {
     return;
   }
+
+  //이전에 선택된 아이는 제거하고 새롭게 선택된 아이템 선택
+  const active = document.querySelector('.category__btn.selected');
+  active.classList.remove('selected');
+  const target =
+    e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
+  target.classList.add('selected');
+
   contentContainer.classList.add('anim-out'); //애니메이션을 추가하면 css에서 설정할대로 opacity:0(투명)
   setTimeout(() => {
     contents.forEach((content) => {

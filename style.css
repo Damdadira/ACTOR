@@ -123,14 +123,8 @@ p {
   display: inline-block;
 }
 
-.navbar__menu__item.active {
-  content: ''; /*밑줄 디자인을 위해 비워둠*/
-  border-bottom: groove 2px var(--color-white);
-  border-bottom: dotted 2px var(--color-white);
-  transition: all 250ms ease-in-out;
-}
-
 .navbar__menu__item:hover {
+  content: ''; /*밑줄 디자인을 위해 비워둠*/
   border-bottom: groove 2px var(--color-white);
   border-bottom: dotted 2px var(--color-white);
 }
