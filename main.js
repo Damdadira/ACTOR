@@ -23,6 +23,23 @@ navbarMenu.addEventListener('click', (event) => {
     return; //link가 null이거나 undefined라면 아무것도 하지마
   }
   console.log(event.target.dataset.link);
-  const scrollTo = document.querySelector(link);
-  scrollTo.scrollIntoView({ behavior: 'smooth' });
+  // 스무스하게 이동하겠다
+  // const scrollTo = document.querySelector(link);
+  // scrollTo.scrollIntoView({ behavior: 'smooth' });
+  scrollIntoView(link);
 });
+
+//Home의 'Contact me'버튼을 누르면 Contact페이지로 이동하도록
+const homeContactBtn = document.querySelector('.home__contact');
+homeContactBtn.addEventListener('click', () => {
+  // const scrollTo = document.querySelector('#contact');
+  // scrollTo.scrollIntoView({ behavior: 'smooth' });
+  scrollIntoView('#contact');
+});
+
+function scrollIntoView(selector) {
+  //반복되니까 따로 빼서 함수로 만듦
+  //'selector'를 주면 이동할 수 있도록
+  const scrollTo = document.querySelector(selector);
+  scrollTo.scrollIntoView({ behavior: 'smooth' });
+}
