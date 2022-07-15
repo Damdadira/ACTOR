@@ -37,6 +37,15 @@ homeContactBtn.addEventListener('click', () => {
   scrollIntoView('#contact');
 });
 
+//스크롤 내릴 때 Home부분이 점점 투명해지도록
+const home = document.querySelector('.home__container'); //배경은 그대로 두고, 안에 있는 콘텐츠만 투명해지도록 home__container로 묶음
+const homeHeight = home.getBoundingClientRect().height;
+// console.log(homeHeight);
+document.addEventListener('scroll', () => {
+  home.style.opacity = 1 - window.scrollY / homeHeight;
+  //불투명:1, 투명:0
+});
+
 function scrollIntoView(selector) {
   //반복되니까 따로 빼서 함수로 만듦
   //'selector'를 주면 이동할 수 있도록
