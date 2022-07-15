@@ -46,6 +46,22 @@ document.addEventListener('scroll', () => {
   //불투명:1, 투명:0
 });
 
+//스크롤을 내리면 arrow up버튼이 보여지도록
+const arrowUp = document.querySelector('.arrow-up');
+document.addEventListener('scroll', () => {
+  if (window.scrollY > homeHeight / 2) {
+    //Home에서 스크롤이 절반 정도 내려오면
+    arrowUp.classList.add('visible');
+  } else {
+    arrowUp.classList.remove('visible');
+  }
+});
+
+//arrow up 버튼 누르면 상단으로 올라가도록
+arrowUp.addEventListener('click', () => {
+  scrollIntoView('#home');
+});
+
 function scrollIntoView(selector) {
   //반복되니까 따로 빼서 함수로 만듦
   //'selector'를 주면 이동할 수 있도록
