@@ -28,7 +28,6 @@ navbarMenu.addEventListener('click', (event) => {
   // scrollTo.scrollIntoView({ behavior: 'smooth' });
   navbarMenu.classList.remove('open'); //small screen에서 처음 시작할 때 navbar메뉴 안보이도록
   scrollIntoView(link);
-  selectNavItem(target);
 });
 
 //small screen에서 navbar toggle button 작동하도록
@@ -105,13 +104,6 @@ filmographyBtnContainer.addEventListener('click', (e) => {
   }, 300);
 });
 
-//반복되니까 따로 빼서 함수로 만듦
-function scrollIntoView(selector) {
-  //'selector'를 주면 이동할 수 있도록
-  const scrollTo = document.querySelector(selector);
-  scrollTo.scrollIntoView({ behavior: 'smooth' });
-}
-
 //navbar에서 해당 섹션으로 이동(활성화)할 때 그 부분을 활성화시키려면?(밑줄 옮겨가는거)
 
 //1.모든 섹션 요소들을 가져옴
@@ -128,10 +120,18 @@ const navItems = sectionIds.map((id) =>
 let selectedNavIndex = 0;
 let selectedNavItem = navItems[0];
 
+//반복되니까 따로 빼서 함수로 만듦
 function selectNavItem(selected) {
   selectedNavItem.classList.remove('active');
   selectedNavItem = selected;
   selectedNavItem.classList.add('active');
+}
+
+function scrollIntoView(selector) {
+  //'selector'를 주면 이동할 수 있도록
+  const scrollTo = document.querySelector(selector);
+  scrollTo.scrollIntoView({ behavior: 'smooth' });
+  selectNavItem(navItems[sectionIds.indexOf(selector)]);
 }
 
 const observerOptions = {
