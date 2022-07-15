@@ -62,8 +62,30 @@ arrowUp.addEventListener('click', () => {
   scrollIntoView('#home');
 });
 
+//Filmography
+const filmographyBtnContainer = document.querySelector(
+  '.filmography__categories'
+);
+const contentContainer = document.querySelector('.filmography__contents');
+const contents = document.querySelectorAll('.content'); //각각의 필모를 배열로 받아오겠다
+filmographyBtnContainer.addEventListener('click', (e) => {
+  const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+  // console.log(filter);
+  if (filter == null) {
+    return;
+  }
+  contents.forEach((content) => {
+    // console.log(content.dataset.type);
+    if (filter === '*' || filter === content.dataset.type) {
+      content.classList.remove('invisible');
+    } else {
+      content.classList.add('invisible');
+    }
+  });
+});
+
+//반복되니까 따로 빼서 함수로 만듦
 function scrollIntoView(selector) {
-  //반복되니까 따로 빼서 함수로 만듦
   //'selector'를 주면 이동할 수 있도록
   const scrollTo = document.querySelector(selector);
   scrollTo.scrollIntoView({ behavior: 'smooth' });
