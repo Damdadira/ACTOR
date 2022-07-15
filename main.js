@@ -28,6 +28,7 @@ navbarMenu.addEventListener('click', (event) => {
   // scrollTo.scrollIntoView({ behavior: 'smooth' });
   navbarMenu.classList.remove('open'); //small screen에서 처음 시작할 때 navbar메뉴 안보이도록
   scrollIntoView(link);
+  selectNavItem(target);
 });
 
 //small screen에서 navbar toggle button 작동하도록
@@ -110,3 +111,72 @@ function scrollIntoView(selector) {
   const scrollTo = document.querySelector(selector);
   scrollTo.scrollIntoView({ behavior: 'smooth' });
 }
+
+//navbar에서 해당 섹션으로 이동(활성화)할 때 그 부분을 활성화시키려면?(밑줄 옮겨가는거)
+
+//1.모든 섹션 요소들을 가져옴
+//모든 아이디를 배열(문자열)로 저장
+const sectionIds = ['#home', '#profile', '#filmography', '#award', '#contact'];
+const sections = sectionIds.map((id) => document.querySelector(id));
+const navItems = sectionIds.map((id) =>
+  document.querySelector(`[data-link="${id}"]`)
+);
+// console.log(sections);
+// console.log(navItems);
+
+//2.IntersectionObserver를 이용해서 모든 섹션들을 관찰
+let selectedNavIndex = 0;
+let selectedNavItem = navItems[0];
+
+function selectNavItem(selected) {
+  selectedNavItem.classList.remove('active');
+  selectedNavItem = selected;
+  selectedNavItem.classList.add('active');
+}
+
+const observerOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.3,
+};
+
+const observeCallback = (entries, observer) => {
+  entries.forEach((entry) => {
+    // console.log(entry.target);
+    if (!entry.isIntersecting && entry.intersectionRatio > 0) {
+      //entry가 진입하지 않거나(밖으로 나가거나) 현재 entry의 intersectionRatio가 무조건 0 이상인 경우
+      const index = sectionIds.indexOf(`#${entry.target.id}`); //indexOf(특정 문자의 위치 찾기)
+      // console.log(index, entry.target.id);
+
+      //스크롤이 아래로 되어서 페이지가 올라옴
+      if (entry.boundingClientRect.y < 0) {
+        selectedNavIndex = index + 1; //바로 뒤에 따라오는 index를 선택하겠다
+      } else {
+        //페이지가 내려가는 경우
+        selectedNavIndex = index - 1;
+      }
+    }
+  });
+};
+
+const observer = new IntersectionObserver(observeCallback, observerOptions);
+sections.forEach((section) => observer.observe(section));
+
+//3.보여지는 섹션에 해댱하는 메뉴 아이템을 활성화
+window.addEventListener('wheel', () => {
+  //'wheel'->사용자가 스스로 스크롤을 할때 이벤트가 발생
+  if (window.scrollY === 0) {
+    //스크롤이 제일 위에 있다면 'Home'을 선택해라
+    selectedNavIndex = 0;
+  } else if (
+    //scrollY와 window창의 innerHeight값을 더한값이 document.body.clientHeight값과
+    //정확하게 일치하지 않는 경우가 있기 때문에 더한값을 반올림 해줘야 함
+    //ex->(scrollY+innerHeignt = 1269.2) != (document.body.clientHeight = 1270)
+    Math.round(window.scrollY + window.innerHeight) >=
+    document.body.clientHeight
+  ) {
+    //스크롤이 제일 밑에 도달했다면 'Contact'를 선택해라
+    selectedNavIndex = navItems.length - 1; //배열의 가장 마지막 인덱스를 선택해라
+  }
+  selectNavItem(navItems[selectedNavIndex]);
+});

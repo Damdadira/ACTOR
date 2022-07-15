@@ -123,6 +123,11 @@ p {
   display: inline-block;
 }
 
+.navbar__menu__item.active {
+  border-bottom: groove 2px var(--color-white);
+  border-bottom: dotted 2px var(--color-white);
+}
+
 .navbar__menu__item:hover {
   content: ''; /*밑줄 디자인을 위해 비워둠*/
   border-bottom: groove 2px var(--color-white);
@@ -449,9 +454,11 @@ p {
     flex-direction: column;
   }
 
+  .navbar__menu__item.active {
+    border: dotted 2px var(--color-white);
+  }
+
   .navbar__menu__item:hover {
-    content: ''; /*밑줄 디자인을 위해 비워둠*/
-    border-bottom: groove 2px var(--color-white);
     border: dotted 2px var(--color-white);
   }
 
