@@ -101,15 +101,15 @@ p {
   text-align: center;
   color: var(--color-white);
   padding: 0;
-  background-color: var(--color-black); /*transparent; */
+  background-color: transparent;
   transition: all var(--animation-duration) ease-in-out;
   z-index: 1;
 }
 
-/* #navbar.navbar-dark {  
-background-color: var(--color-black);
-  padding: 8px;
-}  */
+#navbar.navbar--dark {
+  background-color: var(--color-black);
+  padding: 4px;
+}
 
 .navbar__menu {
   text-align: center;
@@ -125,7 +125,6 @@ background-color: var(--color-black);
 
 .navbar__menu__item.active {
   content: ''; /*밑줄 디자인을 위해 비워둠*/
-  /* border-bottom: solid 2px var(--color-white); */
   border-bottom: groove 2px var(--color-white);
   border-bottom: dotted 2px var(--color-white);
   transition: all 250ms ease-in-out;
