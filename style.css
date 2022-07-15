@@ -268,7 +268,7 @@ p {
 
 .filmography__contents.anim-out {
   opacity: 0;
-  transform: scale(0.96) translateY(40px);
+  transform: scale(0.96) translateY(40px); /*작아지면서 밑으로 내려가게*/
 }
 
 .content {

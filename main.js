@@ -74,14 +74,19 @@ filmographyBtnContainer.addEventListener('click', (e) => {
   if (filter == null) {
     return;
   }
-  contents.forEach((content) => {
-    // console.log(content.dataset.type);
-    if (filter === '*' || filter === content.dataset.type) {
-      content.classList.remove('invisible');
-    } else {
-      content.classList.add('invisible');
-    }
-  });
+  contentContainer.classList.add('anim-out'); //애니메이션을 추가하면 css에서 설정할대로 opacity:0(투명)
+  setTimeout(() => {
+    contents.forEach((content) => {
+      // console.log(content.dataset.type);
+      if (filter === '*' || filter === content.dataset.type) {
+        content.classList.remove('invisible');
+      } else {
+        content.classList.add('invisible');
+      }
+    });
+    //시간이 지나면 애니메이션이 사라지도록 설정해줘야함
+    contentContainer.classList.remove('anim-out'); //opcacity:1
+  }, 300);
 });
 
 //반복되니까 따로 빼서 함수로 만듦
