@@ -385,6 +385,12 @@ background-color: var(--color-black);
   padding-top: 16px;
 }
 
+.contact__email:hover {
+  transform: scale(1.2);
+  color: var(--color-light-grey);
+  cursor: pointer;
+}
+
 .contact__links {
   font-size: var(--font-medium);
   padding-top: 16px;
